@@ -30,6 +30,13 @@ set(tests_dir "${CMAKE_CURRENT_SOURCE_DIR}/tests")
 set(CPACK_DEBIAN_PACKAGE_NAME "${CPACK_PACKAGE_NAME}")
 set(CPACK_RPM_PACKAGE_NAME "${CPACK_PACKAGE_NAME}")
 
+option(WITH_TESTS ON "Enable testing")
+
+if(WITH_TESTS)
+	add_subdirectory("${tests_dir}")
+	enable_testing()
+endif()
+
 add_subdirectory("${LibSource_dir}")
 
 set(CPACK_PACKAGE_MAINTAINER "${CPACK_PACKAGE_VENDOR}")

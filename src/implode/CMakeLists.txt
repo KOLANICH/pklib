@@ -5,4 +5,7 @@ buildAndPackageLib("implode"
 	PRIVATE_INCLUDES ${Include_dir}
 	PRIVATE_LIBS "pkwareLUT"
 )
+if(WITH_TESTS)
+	add_subdirectory("test")
+endif()
 pass_through_cpack_vars()
