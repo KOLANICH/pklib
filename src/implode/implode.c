@@ -14,7 +14,7 @@
 #include <string.h>
 #include <limits.h>
 
-#include "pklib/pklib.h"
+#include "pklib/implode.h"
 
 #if ((1200 < _MSC_VER) && (_MSC_VER < 1400))
 #pragma optimize("", off)               // Fucking Microsoft VS.NET 2003 compiler !!! (_MSC_VER=1310)

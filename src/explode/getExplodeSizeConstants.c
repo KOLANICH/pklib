@@ -1,4 +1,4 @@
-#include "pklib/pklib.h"
+#include "pklib/explode.h"
 
 //-----------------------------------------------------------------------------
 // Export exploding struct sizes

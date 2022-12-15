@@ -1,4 +1,5 @@
-#include "pklib/pklib.h"
+#include "pklib/implode.h"
+#include<stdio.h>
 
 //-----------------------------------------------------------------------------
 // Export imploding struct sizes

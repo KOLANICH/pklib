@@ -5,44 +5,41 @@
 /*---------------------------------------------------------------------------*/
 /*   Date    Ver   Who  Comment                                              */
 /* --------  ----  ---  -------                                              */
-/* 31.03.03  1.00  Lad  Created                                              */
+/* 31.03.03  1.00  Lad  The first version of pkware.h                        */
 /*****************************************************************************/
 
-#ifndef __PKLIB_H__
-#define __PKLIB_H__
+#ifndef __PKLIB_TABLES_H__
+#define __PKLIB_TABLES_H__
 
 #pragma once
+
 #include <stddef.h>
 
 #include "./api.h"
-#include "./tables.h"
 
-//-----------------------------------------------------------------------------
-// Defines
-
-#define CMP_BINARY             0            // Binary compression
-#define CMP_ASCII              1            // Ascii compression
-
-enum PklibErrorCode{
-	CMP_NO_ERROR = 0,
-	CMP_INVALID_DICTSIZE = 1,
-	CMP_INVALID_MODE = 2,
-	CMP_BAD_DATA = 3,
-	CMP_ABORT = 4,
+enum LUTSizesEnum {
+    DIST_SIZES=0x40,
+    CH_BITS_ASC_SIZE=0x100,
+    LENS_SIZES=0x10,
 };
 
-enum CommonSizes {
-    OUT_BUFF_SIZE = 0x802,
-    BUFF_SIZE=0x2204,
+
+// Sizes of look-uptables
+struct LUTSizeConstants{
+    size_t own_size, DIST_SIZES, CH_BITS_ASC_SIZE, LENS_SIZES;
 };
 
 //-----------------------------------------------------------------------------
-// Interface structures
+// Tables (in PKWareLUTs.c)
 
-// Sizes needed to allocate buffer for both TCmpStruct and TDcmpStruct and access their fields in a future-proof way
-struct CommonSizeConstants{
-    size_t own_size, OUT_BUFF_SIZE, BUFF_SIZE;
-};
+extern const unsigned char DistBits[DIST_SIZES];
+extern const unsigned char DistCode[DIST_SIZES];
+extern const unsigned char ExLenBits[LENS_SIZES];
+extern const unsigned short LenBase[LENS_SIZES];
+extern const unsigned char LenBits[LENS_SIZES];
+extern const unsigned char LenCode[LENS_SIZES];
+extern const unsigned char ChBitsAsc[CH_BITS_ASC_SIZE];
+extern const unsigned short ChCodeAsc[CH_BITS_ASC_SIZE];
 
 //-----------------------------------------------------------------------------
 // Public functions
@@ -51,10 +48,10 @@ struct CommonSizeConstants{
    extern "C" {
 #endif
 
-struct CommonSizeConstants PKEXPORT getCommonSizeConstants();
+struct LUTSizeConstants PKEXPORT getLUTSizeConstants();
 
 #ifdef __cplusplus
    }                         // End of 'extern "C"' declaration
 #endif
 
-#endif // __PKLIB_H__
+#endif // __PKLIB_TABLES_H__

@@ -1,4 +1,4 @@
-#include "pklib/pklib.h"
+#include "pklib/tables.h"
 
 //-----------------------------------------------------------------------------
 // Export LUTs sizes
