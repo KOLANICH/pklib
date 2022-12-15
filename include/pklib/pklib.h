@@ -12,6 +12,7 @@
 #define __PKLIB_H__
 
 #pragma once
+#include <stddef.h>
 
 #include <stddef.h>
 
