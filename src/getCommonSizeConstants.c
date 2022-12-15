@@ -1,4 +1,4 @@
-#include "pklib.h"
+#include "pklib/pklib.h"
 
 //-----------------------------------------------------------------------------
 // Export common struct sizes

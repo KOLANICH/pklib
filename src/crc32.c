@@ -10,7 +10,7 @@
 /* 02.05.03  1.00  Lad  Stress test done                                     */
 /*****************************************************************************/
 
-#include "pklib.h"
+#include "pklib/pklib.h"
 
 static unsigned long crc_table[] =
 {

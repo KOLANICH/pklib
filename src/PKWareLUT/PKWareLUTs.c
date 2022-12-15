@@ -4,7 +4,7 @@
 /* Look-Up tables of PKWARE Data Compression library                         */
 /*****************************************************************************/
 
-#include "pklib.h"
+#include "pklib/pklib.h"
 
 char CopyrightPkware[] = "PKWARE Data Compression Library for Win32\r\n"
                          "Copyright 1989-1995 PKWARE Inc.  All Rights Reserved\r\n"

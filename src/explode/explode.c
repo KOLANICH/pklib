@@ -14,7 +14,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include "pklib.h"
+#include "pklib/pklib.h"
 
 #define PKDCL_OK                    0
 #define PKDCL_STREAM_END            1   // All data from the input stream is read
