@@ -13,6 +13,8 @@
 
 #pragma once
 
+#include <stddef.h>
+
 //-----------------------------------------------------------------------------
 // Defines
 
@@ -65,6 +67,33 @@ enum ExplodeSizes{
 #endif
 
 //-----------------------------------------------------------------------------
+// Interface structures
+
+// Sizes of look-uptables
+struct LUTSizeConstants{
+    size_t own_size, DIST_SIZES, CH_BITS_ASC_SIZE, LENS_SIZES;
+};
+
+// Sizes needed to allocate buffer for both TCmpStruct and TDcmpStruct and access their fields in a future-proof way
+struct CommonSizeConstants{
+    size_t own_size, OUT_BUFF_SIZE, BUFF_SIZE;
+};
+
+// Sizes needed to allocate buffer for TCmpStruct and access its fields in a future-proof way
+struct ImplodeSizeConstants{
+    size_t own_size;
+    size_t internal_struct_size;
+    size_t OFFSS_SIZE2, LITERALS_COUNT, HASHTABLE_SIZE;
+};
+
+// Sizes needed to allocate buffer for TDcmpStruct and access its fields in a future-proof way
+struct ExplodeSizeConstants{
+    size_t own_size;
+    size_t internal_struct_size;
+    size_t IN_BUFF_SIZE, CODES_SIZE, OFFSS_SIZE, OFFSS_SIZE1, CH_BITS_ASC_SIZE, LENS_SIZES;
+};
+
+//-----------------------------------------------------------------------------
 // Internal structures
 
 // Compression structure
@@ -100,7 +129,6 @@ typedef struct
 
 #define CMP_BUFFER_SIZE  sizeof(TCmpStruct) // Size of compression structure.
                                             // Defined as 36312 in pkware header file
-
 
 // Decompression structure
 typedef struct
@@ -158,6 +186,11 @@ extern const unsigned short ChCodeAsc[CH_BITS_ASC_SIZE];
    extern "C" {
 #endif
 
+struct LUTSizeConstants PKEXPORT getLUTSizeConstants();
+struct CommonSizeConstants PKEXPORT getCommonSizeConstants();
+
+struct ImplodeSizeConstants PKEXPORT getImplodeSizeConstants();
+
 unsigned int PKEXPORT implode(
    unsigned int (*read_buf)(char *buf, unsigned int *size, void *param),
    void         (*write_buf)(char *buf, unsigned int *size, void *param),
@@ -166,6 +199,7 @@ unsigned int PKEXPORT implode(
    unsigned int *type,
    unsigned int *dsize);
 
+struct ExplodeSizeConstants PKEXPORT getExplodeSizeConstants();
 
 unsigned int PKEXPORT explode(
    unsigned int (*read_buf)(char *buf, unsigned  int *size, void *param),

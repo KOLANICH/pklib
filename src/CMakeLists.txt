@@ -10,3 +10,7 @@ buildAndPackageLib("pkware"
 )
 
 pass_through_cpack_vars()
+
+add_library(pkwareCommonSizeConstants OBJECT "${CMAKE_CURRENT_SOURCE_DIR}/getCommonSizeConstants.c")
+target_include_directories(pkwareCommonSizeConstants PRIVATE ${Include_dir})
+target_link_libraries(pkwareLUT PRIVATE pkwareCommonSizeConstants)
