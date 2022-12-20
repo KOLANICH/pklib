@@ -146,7 +146,7 @@ enum {
 };
 
 //-----------------------------------------------------------------------------
-// Tables (in explode.c)
+// Tables (in PKWareLUTs.c)
 
 extern const unsigned char DistBits[DIST_SIZES];
 extern const unsigned char DistCode[DIST_SIZES];
